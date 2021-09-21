@@ -6,6 +6,10 @@
     border-style: solid;
 }
 
+.todo-complete {
+    background-color: #4CAF50;
+}
+
 .todo-text {
     padding: 1rem;
     color: black;

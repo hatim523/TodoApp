@@ -23,11 +23,24 @@ export default class App extends React.Component {
         })
     }
 
+    onRemoveClick(index) {
+        this.setState({
+            items: this.state.items.filter((elem, i) => i !== index)
+        })
+    }
+
     render() {
         return (
             <>
             {this.state.items.map((item, index) => {
-                return <TodoItem todo={item.todo} completed={item.complete} key={index} id={index} onCompleteClick={(i) => this.onCompleteClick(i)}/>
+                return <TodoItem 
+                    todo={item.todo} 
+                    completed={item.complete} 
+                    key={index} 
+                    id={index} 
+                    onCompleteClick={(i) => this.onCompleteClick(i)}
+                    onRemoveClick={(i) => this.onRemoveClick(i)}
+                    />
             })}
             </>
         )
