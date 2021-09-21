@@ -1,13 +1,14 @@
 import React from 'react';
 import TodoItem from './todoItems';
+import AddTodo from './addTodo'
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             items: [
-                {todo: "Example Text", complete: false, id: 1},
-                {todo: "Text 2", complete: true, id: 2},
+                {todo: "Example Text", complete: false},
+                {todo: "Text 2", complete: true},
             ],
         };
     }
@@ -29,9 +30,17 @@ export default class App extends React.Component {
         })
     }
 
+    onAddTodo(todoText) {
+        const newTodo = {complete: false, todo: todoText}
+        this.setState({
+            items: [newTodo, ...this.state.items]
+        })
+    }
+
     render() {
         return (
             <>
+            <AddTodo onAdd={(todoText) => this.onAddTodo(todoText)}/>
             {this.state.items.map((item, index) => {
                 return <TodoItem 
                     todo={item.todo} 
