@@ -6,8 +6,8 @@ export default class App extends React.Component {
         super(props);
         this.state = {
             items: [
-                {todo: "Example Text", complete: false},
-                {todo: "Text 2", complete: true},
+                {todo: "Example Text", complete: false, id: 1},
+                {todo: "Text 2", complete: true, id: 2},
             ],
         };
     }
@@ -17,14 +17,17 @@ export default class App extends React.Component {
         const toggleItem = items[index];
 
         toggleItem['complete'] = !toggleItem['complete'];
-        
+        items[index] = toggleItem;
+        this.setState({
+            items: items,
+        })
     }
 
     render() {
         return (
             <>
             {this.state.items.map((item, index) => {
-                return <TodoItem todo={item.todo} completed={item.complete} id={index} />
+                return <TodoItem todo={item.todo} completed={item.complete} key={index} id={index} onCompleteClick={(i) => this.onCompleteClick(i)}/>
             })}
             </>
         )
