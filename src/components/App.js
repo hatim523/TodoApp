@@ -1,40 +1,63 @@
 import React from 'react';
+import axios from 'axios'
 import TodoItem from './todoItems';
 import AddTodo from './addTodo'
+import { APIHost } from '../db/settings';
+import { addNewTodo, removeTodo, toggleComplete } from '../api/helpers';
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: [
-                {todo: "Example Text", complete: false},
-                {todo: "Text 2", complete: true},
-            ],
+            items: [],
         };
     }
 
-    onCompleteClick(index) {
-        const items = this.state.items.slice();
-        const toggleItem = items[index];
-
-        toggleItem['complete'] = !toggleItem['complete'];
-        items[index] = toggleItem;
-        this.setState({
-            items: items,
-        })
+    componentDidMount() {
+        axios.get(`${APIHost}todos/`)
+            .then(res => {
+                this.setState({
+                    items: res.data
+                });
+            });
     }
 
-    onRemoveClick(index) {
-        this.setState({
-            items: this.state.items.filter((elem, i) => i !== index)
+    onCompleteClick(id) {
+        const items = this.state.items.slice();
+        let item_index;
+        items.map((elem, i) => {
+            if (elem['id'] === id)
+                item_index = i;
         })
+
+        const toggleItem = items[item_index];
+        toggleItem['complete'] = !toggleItem['complete'];
+        toggleComplete(id, toggleItem['complete'])
+            .then(res => {
+                items[item_index] = toggleItem;
+                this.setState({
+                    items: items,
+                })
+            })
+    }
+
+    onRemoveClick(id) {
+        removeTodo(id)
+            .then(res => {
+                this.setState({
+                    items: this.state.items.filter((elem, i) => elem['id'] !== id)
+                })
+            })
     }
 
     onAddTodo(todoText) {
         const newTodo = {complete: false, todo: todoText}
-        this.setState({
-            items: [newTodo, ...this.state.items]
-        })
+        addNewTodo(newTodo)
+            .then(res => {
+                this.setState({
+                    items: [res.data, ...this.state.items]
+                })
+            });
     }
 
     render() {
@@ -46,7 +69,7 @@ export default class App extends React.Component {
                     todo={item.todo} 
                     completed={item.complete} 
                     key={index} 
-                    id={index} 
+                    id={item.id} 
                     onCompleteClick={(i) => this.onCompleteClick(i)}
                     onRemoveClick={(i) => this.onRemoveClick(i)}
                     />
