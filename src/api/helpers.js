@@ -1,17 +1,15 @@
-import axios from "axios";
-import { APIHost } from "../db/settings";
-
+import API from './api';
 
 function addNewTodo(newTodo) {
-    return axios.post(`${APIHost}todos`, newTodo);
+  return API.post('todos', newTodo);
 }
 
 function removeTodo(todoId) {
-    return axios.delete(`${APIHost}todos/${todoId}`);
+  return API.delete(`todos/${todoId}`);
 }
 
 function toggleComplete(todoId, isCompleted) {
-    return axios.patch(`${APIHost}todos/${todoId}`, {complete: isCompleted})
+  return API.patch(`todos/${todoId}`, { complete: isCompleted });
 }
 
-export {addNewTodo, removeTodo, toggleComplete};
+export { addNewTodo, removeTodo, toggleComplete };
