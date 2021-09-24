@@ -4,11 +4,6 @@
       "todo": "Todo Item 3",
       "complete": true,
       "id": 4
-    },
-    {
-      "complete": true,
-      "todo": "awf",
-      "id": 5
     }
   ]
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/todoItems.css';
+import '../styles/todoItems.scss';
 
 function TodoItem({
   id, completed, todo, onCompleteClick, onRemoveClick,
