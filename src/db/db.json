@@ -1,9 +1,14 @@
 {
   "todos": [
     {
-      "complete": false,
-      "todo": "awfawfsc",
+      "complete": true,
+      "todo": "Added todo search",
       "id": 1
+    },
+    {
+      "complete": false,
+      "todo": "Signup functionality",
+      "id": 2
     }
   ]
 }

@@ -4,7 +4,7 @@ import store from '../redux/store';
 import TodoItem from './TodoItem';
 import { fetchTodos } from '../redux/todo/asyncActions';
 
-function TodoItems() {
+function TodoItems({ query }) {
   const items = useSelector((state) => state.items);
 
   useEffect(() => {
@@ -13,14 +13,12 @@ function TodoItems() {
 
   return (
     <>
-      {items.map((item) => (
+      {items.filter((elem) => elem.todo.includes(query)).map((item) => (
         <TodoItem
           todo={item.todo}
           completed={item.complete}
           key={item.id}
           id={item.id}
-          onCompleteClick={null}
-          onRemoveClick={null}
         />
       ))}
     </>

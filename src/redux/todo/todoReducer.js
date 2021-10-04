@@ -4,6 +4,7 @@ import {
 
 const initialState = {
   items: [],
+  searchQuery: '',
 };
 
 const todoReducer = (state = initialState, action) => {

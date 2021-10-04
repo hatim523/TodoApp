@@ -7,7 +7,7 @@ function AddTodo() {
 
   return (
     <div>
-      <input type="text" value={inputTodo} onInput={(e) => setInputTodo(e.target.value)} />
+      <input type="text" placeholder="New todo" value={inputTodo} onInput={(e) => setInputTodo(e.target.value)} />
       <button type="button" className="button" onClick={() => store.dispatch(addTodoDB(inputTodo))}>Add Todo</button>
     </div>
   );
