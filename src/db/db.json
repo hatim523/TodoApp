@@ -1,7 +1,7 @@
 {
   "todos": [
     {
-      "complete": true,
+      "complete": false,
       "todo": "Added todo search",
       "id": 1
     },
@@ -9,6 +9,11 @@
       "complete": false,
       "todo": "Signup functionality",
       "id": 2
+    },
+    {
+      "complete": true,
+      "todo": "yo",
+      "id": 3
     }
   ]
 }

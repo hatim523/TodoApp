@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
-import AddTodo from './addTodo';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import store from '../redux/store';
-import TodoItems from './TodoItems';
-import SearchTodo from './SearchTodo';
+import Nav from './Nav';
+import Todo from './Todo';
 
 function App() {
-  const [query, setQuery] = useState('');
-
   return (
     <Provider store={store}>
-      <SearchTodo query={query} onQueryUpdate={setQuery} />
-      <AddTodo />
-      <TodoItems query={query} />
+      <Router>
+        <Nav />
+        <Switch>
+
+          <Route path="/todo" exact component={Todo} />
+        </Switch>
+      </Router>
     </Provider>
   );
 }
