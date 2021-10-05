@@ -1,4 +1,12 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "name": "Hatim",
+      "email": "hatim@gmail.com",
+      "password": "helloworld123"
+    }
+  ],
   "todos": [
     {
       "complete": false,
