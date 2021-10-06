@@ -5,6 +5,36 @@
       "name": "Hatim",
       "email": "hatim@gmail.com",
       "password": "helloworld123"
+    },
+    {
+      "name": "Juzer",
+      "email": "hatim2@gmail.com",
+      "password": "helloworld123",
+      "id": 2
+    },
+    {
+      "name": "Hasan",
+      "email": "hasan@gmail.com",
+      "password": "helloworld123",
+      "id": 3
+    },
+    {
+      "name": "Hasan",
+      "email": "hasan@gmail.com",
+      "password": "helloworld123",
+      "id": 4
+    },
+    {
+      "name": "Hasan",
+      "email": "hasan@gmail.com",
+      "password": "helloworld123",
+      "id": 5
+    },
+    {
+      "name": "Hasan",
+      "email": "he@g,cin",
+      "password": "helloworld123",
+      "id": 6
     }
   ],
   "todos": [

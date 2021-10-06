@@ -15,7 +15,7 @@ function Login() {
         if (res.data.length > 0) {
           localStorage.setItem('auth', res.data[0].id);
           seterror(() => 'Redirecting...');
-          window.location.reload(false);
+          window.location.href = '/';
         } else {
           seterror(() => 'Invalid username or password.');
         }
