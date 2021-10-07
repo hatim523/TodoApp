@@ -8,6 +8,7 @@ function Dashboard() {
       <ul>
 
         <Link to="/todo"><li>Todos</li></Link>
+        <Link to="/contacts"><li>Contacts</li></Link>
       </ul>
     </div>
   );

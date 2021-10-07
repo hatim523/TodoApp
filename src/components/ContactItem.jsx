@@ -1,8 +1,10 @@
 import React from 'react';
+import '../styles/contactItems.scss';
 
 function ContactItem({ data }) {
   return (
-    <div style={{ color: 'blue' }}>
+    <div className="contact-item">
+      <img className="contact-pic" src={data.picture} alt="Contact" />
       <h3>{data.name}</h3>
       <p>
         Phone:

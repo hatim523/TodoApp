@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import { fetchAllContacts } from '../redux/contact/apiActions';
 import ContactContext from '../redux/contact/contactContext';
+import AddContact from './AddContact';
 import ContactList from './ContactList';
 
 function Contact() {
   const contactContext = useContext(ContactContext);
-  console.log(contactContext.contactState);
 
   useEffect(() => {
     fetchAllContacts(contactContext.contactDispatch);
@@ -13,6 +13,7 @@ function Contact() {
 
   return (
     <>
+      <AddContact />
       {contactContext.contactState.loading ? 'Fetching data' : <ContactList dataList={contactContext.contactState.contacts} /> }
     </>
   );
