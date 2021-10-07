@@ -9,7 +9,10 @@ function Nav() {
       <Link to="/todo">
         <li>Todos</li>
       </Link>
-      <li>Contacts</li>
+      <Link to="/contacts">
+        <li>Contacts</li>
+      </Link>
+
       <li><button type="button" onClick={() => logout()}>Logout</button></li>
     </>
   );
