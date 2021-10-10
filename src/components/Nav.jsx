@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import isLogged from '../api/loginCheck';
 import logout from '../api/logout';
+import ThemeSelector from './ThemeSelector';
 
-function Nav() {
+function Nav({ themes, changeTheme }) {
   const loggedNavigation = (
     <>
       <Link to="/todo">
@@ -23,12 +24,16 @@ function Nav() {
       <Link to="register/"><li>Register</li></Link>
     </>
   );
+
   return (
-    <nav>
-      <ul>
-        {isLogged() ? loggedNavigation : unAuthorizedNavigation}
-      </ul>
-    </nav>
+    <>
+      <ThemeSelector themes={themes} changeTheme={changeTheme} />
+      <nav>
+        <ul>
+          {isLogged() ? loggedNavigation : unAuthorizedNavigation}
+        </ul>
+      </nav>
+    </>
   );
 }
 
