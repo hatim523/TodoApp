@@ -1,22 +1,28 @@
-import React from 'react';
-import '../styles/todoItems.scss';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import store from '../redux/store';
+import TodoItem from './TodoItem';
+import { fetchTodos } from '../redux/todo/asyncActions';
 
-function TodoItem({
-  id, completed, todo, onCompleteClick, onRemoveClick,
-}) {
+function TodoItems({ query }) {
+  const items = useSelector((state) => state.items);
+
+  useEffect(() => {
+    store.dispatch(fetchTodos());
+  }, []);
+
   return (
-    <div className={completed ? 'todo-item todo-complete' : 'todo-item'}>
-      <span className="todo-text">{todo}</span>
-      <button type="button" className="button todo-done" onClick={() => onCompleteClick(id)}>
-        Mark
-        {' '}
-        {completed ? 'Undone' : 'Complete'}
-      </button>
-      <button type="button" className="button todo-remove" onClick={() => onRemoveClick(id)}>Remove</button>
-    </div>
+    <>
+      {items.filter((elem) => elem.todo.includes(query)).map((item) => (
+        <TodoItem
+          todo={item.todo}
+          completed={item.complete}
+          key={item.id}
+          id={item.id}
+        />
+      ))}
+    </>
   );
 }
 
-TodoItem.propTypes = [];
-
-export default TodoItem;
+export default TodoItems;
